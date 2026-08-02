@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediaHub — Libreria multimediale personale</title>
+<meta name="description" content="MediaHub è un'app desktop per organizzare la tua libreria di film e serie TV, con metadati automatici, ricerca testi e backup opzionale su Google Drive.">
+<style>
+  :root {
+    --bg: #12141A;
+    --surface: #1B1F27;
+    --surface-2: #232838;
+    --text: #EDEFF4;
+    --muted: #8C93A3;
+    --accent: #E7A33E;
+    --accent-dim: #7A5A28;
+    --rule: #2A2F3D;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 28px; }
+
+  header.top {
+    border-bottom: 1px solid var(--rule);
+    position: sticky; top: 0; background: rgba(18,20,26,0.9); backdrop-filter: blur(6px);
+    z-index: 10;
+  }
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 0;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; letter-spacing: 0.2px; }
+  .brand .mark {
+    width: 26px; height: 26px; border-radius: 7px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-dim));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 800; color: #1B1206;
+  }
+  nav.top-links { display: flex; gap: 22px; font-size: 14px; color: var(--muted); }
+  nav.top-links a { color: var(--muted); }
+  nav.top-links a:hover { color: var(--text); text-decoration: none; }
+
+  .hero { padding: 84px 0 56px; }
+  .eyebrow {
+    color: var(--accent); font-size: 13px; font-weight: 600; letter-spacing: 1.4px;
+    text-transform: uppercase; margin-bottom: 18px; display: block;
+  }
+  h1 {
+    font-size: clamp(34px, 5vw, 52px); font-weight: 800; letter-spacing: -0.5px;
+    line-height: 1.08; max-width: 760px;
+  }
+  .lede {
+    margin-top: 20px; font-size: 18px; color: var(--muted); max-width: 560px;
+  }
+  .hero-strip {
+    margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--rule); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden;
+  }
+  .hero-strip .cell { background: var(--surface); padding: 18px 20px; }
+  .hero-strip .cell .k { font-size: 22px; font-weight: 800; color: var(--accent); }
+  .hero-strip .cell .v { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  section { padding: 56px 0; border-top: 1px solid var(--rule); }
+  h2 { font-size: 26px; font-weight: 700; letter-spacing: -0.2px; }
+  .section-lede { color: var(--muted); margin-top: 10px; max-width: 540px; }
+
+  .features {
+    margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  @media (max-width: 620px) { .features { grid-template-columns: 1fr; } .hero-strip { grid-template-columns: 1fr; } }
+  .feature {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; padding: 22px;
+  }
+  .feature .tag {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.6px;
+    color: var(--accent); text-transform: uppercase; margin-bottom: 10px;
+  }
+  .feature h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .feature p { color: var(--muted); font-size: 14.5px; }
+
+  .drive-box {
+    margin-top: 32px; background: var(--surface-2); border: 1px solid var(--rule);
+    border-radius: 12px; padding: 26px;
+  }
+  .drive-box h3 { font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
+  .drive-box p { color: var(--muted); font-size: 14.5px; }
+  .drive-box p + p { margin-top: 10px; }
+  .drive-box code {
+    background: var(--surface); padding: 2px 6px; border-radius: 4px; font-size: 13px; color: var(--text);
+    border: 1px solid var(--rule);
+  }
+
+  footer {
+    border-top: 1px solid var(--rule); padding: 32px 0 48px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+  }
+  footer .muted { color: var(--muted); font-size: 13.5px; }
+  footer .links { display: flex; gap: 18px; font-size: 13.5px; }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap topbar">
+    <div class="brand"><span class="mark">M</span> MediaHub</div>
+    <nav class="top-links">
+      <a href="#funzioni">Funzionalità</a>
+      <a href="#drive">Google Drive</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero" style="border-top: none;">
+    <span class="eyebrow">App desktop · Uso personale</span>
+    <h1>La tua libreria di film e serie TV, organizzata come si deve.</h1>
+    <p class="lede">
+      MediaHub è un'applicazione desktop che cataloga la tua collezione multimediale locale,
+      recupera automaticamente locandine e informazioni, e — su richiesta — mette al sicuro
+      la tua configurazione con un backup privato su Google Drive.
+    </p>
+
+    <div class="hero-strip">
+      <div class="cell">
+        <div class="k">100%</div>
+        <div class="v">Libreria salvata in locale sul tuo PC</div>
+      </div>
+      <div class="cell">
+        <div class="k">1 cartella</div>
+        <div class="v">Accesso Drive limitato ai soli dati dell'app</div>
+      </div>
+      <div class="cell">
+        <div class="k">0</div>
+        <div class="v">Dati venduti o condivisi con terzi</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="funzioni">
+    <h2>Cosa fa</h2>
+    <p class="section-lede">Le funzioni principali dell'app, pensata per chi gestisce una libreria multimediale personale sul proprio computer.</p>
+
+    <div class="features">
+      <div class="feature">
+        <span class="tag">Catalogazione</span>
+        <h3>Libreria organizzata</h3>
+        <p>Scansiona le cartelle locali e organizza film e serie TV con copertine, generi e informazioni recuperate automaticamente.</p>
+      </div>
+      <div class="feature">
+        <span class="tag">Metadati</span>
+        <h3>Schede complete</h3>
+        <p>Arricchisce ogni titolo con trame, locandine e dettagli, così la libreria è sempre chiara da sfogliare.</p>
+      </div>
+      <div class="feature">
+        <span class="tag">Musica</span>
+        <h3>Ricerca testi e brani</h3>
+        <p>Integrazione con servizi musicali pubblici per trovare rapidamente brani e testi collegati ai tuoi contenuti.</p>
+      </div>
+      <div class="feature">
+        <span class="tag">Backup</span>
+        <h3>Sincronizzazione opzionale</h3>
+        <p>Se lo attivi, MediaHub salva una copia della configurazione della libreria in una cartella privata su Google Drive.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="drive">
+    <h2>Come usiamo Google Drive</h2>
+    <p class="section-lede">Trasparenza su cosa succede quando colleghi il tuo account Google.</p>
+
+    <div class="drive-box">
+      <h3><span class="dot"></span>Accesso limitato ai soli dati dell'app</h3>
+      <p>
+        MediaHub richiede l'autorizzazione <code>drive.appdata</code>, lo scope Google più ristretto disponibile
+        per Drive: dà accesso <strong>esclusivamente</strong> a una cartella nascosta e dedicata all'app
+        (l'"App Data Folder"), invisibile nell'interfaccia normale di Google Drive.
+      </p>
+      <p>
+        L'app <strong>non può</strong> vedere, leggere o modificare nessun altro file presente nel tuo Google Drive:
+        non i tuoi documenti, non le tue foto, non le cartelle condivise.
+      </p>
+      <p>
+        Puoi revocare l'accesso in qualsiasi momento dalla pagina
+        <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Autorizzazioni del tuo Account Google</a>.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <span class="muted">MediaHub — app desktop per uso personale</span>
+    <div class="links">
+      <a href="privacy.html">Informativa sulla privacy</a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

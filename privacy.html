@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informativa sulla privacy — MediaHub</title>
+<meta name="description" content="Informativa sulla privacy di MediaHub: quali dati raccoglie l'app, come vengono usati e come richiederne la cancellazione.">
+<style>
+  :root {
+    --bg: #12141A;
+    --surface: #1B1F27;
+    --surface-2: #232838;
+    --text: #EDEFF4;
+    --muted: #8C93A3;
+    --accent: #E7A33E;
+    --accent-dim: #7A5A28;
+    --rule: #2A2F3D;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+  }
+  a { color: var(--accent); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 28px; }
+
+  header.top {
+    border-bottom: 1px solid var(--rule);
+    position: sticky; top: 0; background: rgba(18,20,26,0.9); backdrop-filter: blur(6px);
+  }
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; }
+  .brand .mark {
+    width: 26px; height: 26px; border-radius: 7px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-dim));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 800; color: #1B1206;
+  }
+  .back { font-size: 14px; color: var(--muted); }
+  .back:hover { color: var(--text); }
+
+  .hero { padding: 56px 0 8px; }
+  .eyebrow {
+    color: var(--accent); font-size: 13px; font-weight: 600; letter-spacing: 1.4px;
+    text-transform: uppercase; margin-bottom: 16px; display: block;
+  }
+  h1 { font-size: clamp(28px, 4vw, 38px); font-weight: 800; letter-spacing: -0.4px; }
+  .updated { color: var(--muted); font-size: 14px; margin-top: 12px; }
+
+  main { padding: 32px 0 72px; }
+  section { padding: 26px 0; border-top: 1px solid var(--rule); }
+  section:first-child { border-top: 1px solid var(--rule); margin-top: 24px; }
+  h2 { font-size: 19px; font-weight: 700; margin-bottom: 12px; }
+  p { color: var(--muted); font-size: 15px; margin-top: 10px; }
+  p:first-of-type { margin-top: 0; }
+  ul { margin-top: 12px; padding-left: 20px; color: var(--muted); font-size: 15px; }
+  li { margin-top: 8px; }
+  li strong { color: var(--text); }
+  code {
+    background: var(--surface); padding: 2px 6px; border-radius: 4px; font-size: 13.5px; color: var(--text);
+    border: 1px solid var(--rule);
+  }
+  .highlight {
+    background: var(--surface-2); border: 1px solid var(--rule); border-radius: 12px;
+    padding: 20px 22px; margin-top: 14px;
+  }
+  .highlight p { color: var(--text); }
+  .highlight p.muted-note { color: var(--muted); font-size: 13.5px; margin-top: 8px; }
+
+  footer {
+    border-top: 1px solid var(--rule); padding: 28px 0 48px;
+    color: var(--muted); font-size: 13.5px;
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap topbar">
+    <div class="brand"><span class="mark">M</span> MediaHub</div>
+    <a class="back" href="index.html">← Home</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <span class="eyebrow">Informativa</span>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Ultimo aggiornamento: agosto 2026</p>
+  </div>
+
+  <main>
+
+    <section style="border-top: none;">
+      <h2>1. Chi siamo</h2>
+      <p>
+        MediaHub è un'applicazione desktop per uso personale, sviluppata da un singolo sviluppatore
+        indipendente, che consente di organizzare la propria libreria multimediale locale
+        (film e serie TV) e, facoltativamente, di sincronizzarne la configurazione su Google Drive.
+      </p>
+      <p>
+        Per qualsiasi domanda su questa informativa o sui dati trattati, puoi scrivere a:
+        <a href="mailto:INSERISCI-QUI-LA-TUA-EMAIL@esempio.com">INSERISCI-QUI-LA-TUA-EMAIL@esempio.com</a>.
+      </p>
+    </section>
+
+    <section>
+      <h2>2. Dati trattati localmente</h2>
+      <p>
+        La libreria multimediale (elenco file, metadati, copertine scaricate, preferenze dell'app)
+        viene salvata esclusivamente sul tuo computer, nella cartella dati dell'applicazione.
+        Questi dati non vengono inviati a nessun server, salvo il backup facoltativo descritto al punto 3.
+      </p>
+    </section>
+
+    <section>
+      <h2>3. Accesso a Google Drive (facoltativo)</h2>
+      <p>
+        Se scegli di attivare il backup, MediaHub richiede l'accesso al tuo account Google tramite
+        OAuth 2.0, utilizzando esclusivamente lo scope:
+      </p>
+      <div class="highlight">
+        <p><code>https://www.googleapis.com/auth/drive.appdata</code></p>
+        <p class="muted-note">
+          Questo scope consente l'accesso solo alla cartella dati nascosta e dedicata all'applicazione
+          ("App Data Folder"), non visibile nell'interfaccia normale di Google Drive e non accessibile
+          da altre app. MediaHub non può leggere, modificare o eliminare nessun altro file, cartella
+          o documento presente nel tuo Google Drive.
+        </p>
+      </div>
+      <p>Tramite questo accesso, l'app:</p>
+      <ul>
+        <li><strong>Salva</strong> una copia di backup della configurazione e dei metadati della libreria, cifrata in transito (HTTPS).</li>
+        <li><strong>Legge</strong> quello stesso backup per ripristinare la libreria su un altro dispositivo, solo su tua richiesta esplicita.</li>
+        <li><strong>Non</strong> effettua alcuna azione automatica o in background senza un'azione dell'utente.</li>
+      </ul>
+      <p>
+        Il token di accesso ottenuto viene salvato localmente sul tuo dispositivo, in un file protetto
+        dal sistema operativo, e non è mai condiviso con lo sviluppatore né con terze parti.
+      </p>
+    </section>
+
+    <section>
+      <h2>4. Servizi di terze parti</h2>
+      <p>
+        MediaHub utilizza alcune API pubbliche per arricchire la libreria con informazioni e contenuti.
+        Queste richieste riguardano solo i contenuti cercati (es. titolo di un film, brano musicale) e
+        <strong>non includono mai dati del tuo account Google</strong>:
+      </p>
+      <ul>
+        <li><strong>TMDB (The Movie Database)</strong> — per recuperare locandine, trame e informazioni su film e serie TV.</li>
+        <li><strong>YouTube Music</strong> — per la ricerca pubblica di brani musicali collegati ai contenuti della libreria.</li>
+        <li><strong>Twitch</strong> — per funzionalità opzionali collegate a contenuti in streaming.</li>
+      </ul>
+      <p>
+        Il trattamento dei dati da parte di questi servizi è regolato dalle rispettive informative sulla privacy.
+      </p>
+    </section>
+
+    <section>
+      <h2>5. Dati non raccolti</h2>
+      <p>MediaHub non raccoglie, non vende e non condivide con terzi:</p>
+      <ul>
+        <li>File, documenti, foto o altri contenuti del tuo Google Drive al di fuori della cartella dati dell'app.</li>
+        <li>Dati personali del tuo account Google (email, contatti, rubrica).</li>
+        <li>Dati di navigazione, tracciamento pubblicitario o analytics.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>6. Come revocare l'accesso e cancellare i dati</h2>
+      <p>
+        Puoi revocare in qualsiasi momento l'autorizzazione concessa a MediaHub dalla pagina
+        <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Autorizzazioni del tuo Account Google</a>.
+        Revocando l'accesso, il backup salvato nella cartella dati dell'app viene reso permanentemente
+        inaccessibile e verrà eliminato automaticamente da Google secondo le sue policy.
+      </p>
+      <p>
+        Per eliminare i dati salvati in locale, è sufficiente disinstallare l'applicazione o rimuovere
+        manualmente la sua cartella dati dal computer.
+      </p>
+    </section>
+
+    <section>
+      <h2>7. Modifiche a questa informativa</h2>
+      <p>
+        Eventuali modifiche a questa informativa saranno pubblicate su questa stessa pagina, con
+        aggiornamento della data indicata in cima al documento.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    MediaHub — Informativa sulla privacy
+  </footer>
+</div>
+
+</body>
+</html>
